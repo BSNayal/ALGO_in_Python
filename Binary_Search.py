@@ -12,7 +12,6 @@ def search(data, number):
         else:
             mid = data[(low + high)//2]
             if mid == number:
-
                 print('NUMBER IS FOUND...!!!')
                 break
             elif number > mid:
