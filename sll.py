@@ -1,49 +1,35 @@
 import random
-
-class Node(object):
-
-    def __init__(self, value):
-        self.value = value
-        self.next = None
-
-    
-    @property
-    def data(self):
-        return self.value
-
-    @data.setter
-    def data(self,value):
-        try:
-            if value:
-                self.value = value
-        except ValueError:
-            print('Value not found')
-            raise
-
-
+from sll_node import SLLNode
 class SLList(object):
 
     def __init__(self):
         self._head = None
-        self._tail = None
 
     def addNode(self,value):
-        node = Node(value)
+        node = SLLNode(value)
         if not self._head:
             self._head = node
         else:
-            self._tail.next = node
-        self._tail = node
+            temp = self._head
+            while(temp.next):
+                temp = temp.next
+            temp.next = node
 
     def delNode(self,value):
         temp = self._head
-        while temp:
-            if temp.data == value:
-                del_value  = self._head.next
-                temp.data = temp.next.data
-                temp.next = temp.next.next
-                del del_value
-            temp = temp.next
+        if self._head.value == value:
+            self._head = self._head.next
+            del temp
+        else:
+            prev = self._head
+            while(temp):
+                if temp.value == value:
+                    prev.next = temp.next
+                    del temp
+                    break
+                else:
+                    prev = temp
+                    temp = temp.next
 
     def printList(self):
         temp = self._head
@@ -58,9 +44,9 @@ class SLList(object):
 
 def main():
     num_list = list(range(10))
-    num = 7
     random.shuffle(num_list)
     print('Initial list = ',num_list)
+    num=random.randint(0,10)
     print('\n')
     list_obj = SLList()
     for value in num_list:
@@ -68,7 +54,7 @@ def main():
 
     print('list before deleting\n')
     list_obj.printList()
-    print('number to be deleted = \n',num)
+    print('number to be deleted = {}\n'.format(num))
     list_obj.delNode(num)
     print('list after deleting\n')
     list_obj.printList()
