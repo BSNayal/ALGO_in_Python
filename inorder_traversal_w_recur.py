@@ -1,12 +1,12 @@
 from create_btree import BinaryTree
 import random
 
-def preorder(node):
+def inorder(node):
     if not node:
         return
-    preorder(node.left_node)
+    inorder(node.left_node)
     print(" {}".format(node.data), end='')
-    preorder(node.right_node)
+    inorder(node.right_node)
 
 def main():
     num_list = list(range(10))
@@ -18,7 +18,7 @@ def main():
     bt.print_tree(root)
 
     print("\n Inorder traversal :\n")
-    preorder(root)
+    inorder(root)
     print('\n')
     
 
