@@ -67,42 +67,6 @@ class BinaryTree(object):
             print('right node = None')
         self.print_tree(temp.left_node)
         self.print_tree(temp.right_node)
-
-    def print_pre_order(self,node):
-        if not node:
-            return None
-        print('node value = ',node.data)
-        self.print_pre_order(node.left_node)
-        self.print_pre_order(node.right_node)
-
-    def print_in_order(self,node):
-        if not node:
-            return None
-        self.print_in_order(node.left_node)
-        print('node value = ', node.data)
-        self.print_in_order(node.right_node)
-
-    def print_post_order(self,node):
-        if not node:
-            return None
-        self.print_post_order(node.left_node)
-        self.print_post_order(node.right_node)
-        print('node value = ',node.data)
-
-
-
-def main():
-    num_list = sorted(random.sample(range(100),10))
-    print("current list = ", num_list)
-    btree = BinaryTree()
-    btree.insert_node(num_list)
-    #btree.print_tree(btree.root_node)
-    btree.print_pre_order(btree.root_node)
-    btree.print_in_order(btree.root_node)
-    btree.print_post_order(btree.root_node)
-
-
-if __name__ == '__main__':
-    main()         
+       
 
         
